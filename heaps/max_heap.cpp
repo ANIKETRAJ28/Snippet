@@ -86,7 +86,7 @@ class PriorityQueue {
 
     int peek() {
         /**
-         * TC = O(1)
+         * TC = O(1g)
          * SC = O(1)
         */
         return heap[0];
