@@ -14,6 +14,10 @@ class PriorityQueue {
     vec<int> heap;
 
     void display() {
+        /**
+         * TC = O(n)
+         * SC = O(1)
+        */
         cout<<"[ ";
         for(int i = 0 ; i < heap.size() ; i++) {
             cout<<heap[i]<<" ";
@@ -22,6 +26,10 @@ class PriorityQueue {
     }
 
     void upHeapify() {
+        /**
+         * TC = O(logn)
+         * SC = O(1)
+        */
         int ci = heap.size()-1;
         while(ci > 0) {
             // parent index
@@ -35,6 +43,10 @@ class PriorityQueue {
     }
 
     void downHeapify() {
+        /**
+         * TC = O(logn)
+         * SC = O(1)
+        */
         int pi = 0;
         while(pi < heap.size()) {
             int maxElei = pi;
@@ -52,18 +64,33 @@ class PriorityQueue {
     }
 
     void push(int val) {
+        /**
+         * TC = O(logn)
+         * SC = O(1)
+        */
         heap.push_back(val);
         // upheapification
         upHeapify();
     }
 
     void pop() {
+        /**
+         * TC = O(logn)
+         * SC = O(1)
+        */
         swap(heap[0], heap[heap.size()-1]);
         heap.pop_back();
         // downheapification
         downHeapify();
     }
 
+    int peek() {
+        /**
+         * TC = O(1)
+         * SC = O(1)
+        */
+        return heap[0];
+    }
 };
 
 int main(){
