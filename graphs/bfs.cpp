@@ -25,13 +25,28 @@ void add_list(int src, int dst, bool direc) {
     if(direc) graph[dst].push_back(src);
 }
 
-void display() {
-    for(int i = 0 ; i < v ; i++) {
-        cout<<i<<" -> (";
-        for(auto el : graph[i]) {
-            cout<<el<<",";
+unordered_set<int> visited;
+
+void bfs(int src, vector<int> &dist) {
+    queue<int> qu;
+    visited.clear();
+    dist.resize(v, INT_MAX);
+    dist[src] = 0;
+    visited.insert(src);
+    qu.push(src);
+    while(not qu.empty()) {
+        int curr = qu.front();
+        qu.pop();
+        for(auto neighbour : graph[curr]) {
+            if(not visited.count(neighbour)) {
+                qu.push(neighbour);
+                visited.insert(neighbour);
+                dist[neighbour] = dist[curr] + 1;
+            }
         }
-        cout<<")\n";
+    }
+    for(auto el : dist) {
+        cout<<el<<" ";
     }
 }
 
@@ -43,9 +58,12 @@ int main() {
     while(e--) {
         int src, dst;
         cin>>src>>dst;
-        add_list(src, dst, false);
+        add_list(src, dst, true);
     }
-    display();
+    int src;
+    cin>>src;
+    vector<int> dist;
+    bfs(src, dist);
     return 0;
 }
 
@@ -62,4 +80,4 @@ int main() {
 // 4 5
 // 5 6
 // 3 5
-// 0 6
+// 0 
