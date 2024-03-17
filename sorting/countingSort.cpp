@@ -17,6 +17,10 @@ int maxi(vector<int> &arr) {
     return maxEle;
 }
 
+/**
+ * TC = O(maxi(arr))
+ * SC = O(maxi(arr))
+*/
 vector<int> countingSort(vector<int> &originalArr, vector<int> &countArr) {
     int n = originalArr.size();
     vector<int> sortedArr(n);
